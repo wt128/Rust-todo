@@ -1,26 +1,21 @@
-use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{web, App, HttpServer};
+mod controller;
+use controller as c;
 
-async fn index() -> impl Responder {
-	
-	HttpResponse::Ok().body("Hello World")
-}
 
-async fn index2() -> impl Responder {
-	HttpResponse::Ok().json("{message:Hello world again!}")
-}
-
-use actix_web::get;
-#[get("/macro-path")]
-async fn index3() -> impl Responder {
-	HttpResponse::Ok().json("{aaaaa:Heeelll}")
-}
+// #[get("/macro-path")]
+// async fn index3() -> impl Responder {
+// 	HttpResponse::Ok().json("{aaaaa:Heeelll}")
+// }
 #[actix_rt::main]
+
 async fn main() -> std::io::Result<()> {
 	HttpServer::new(|| {
 		App::new()
-			.route("/",web::get().to(index))
-			.route("/again",web::get().to(index2))
-	 })
+			.route("/",web::get().to(c::insert::index2))
+			.route("/ff",web::get().to(c::show::index))
+			
+	 })	
 	   .bind("127.0.0.1:8080")?
 	   .run()
 	   .await
