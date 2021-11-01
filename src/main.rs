@@ -1,19 +1,30 @@
 use actix_web::{web, App, HttpServer};
-mod controller;
-use controller as c;
+
+#[macro_use]
+extern crate diesel;
+extern crate dotenv;
+
+mod db;
+mod show;
+
+pub mod schema;
+pub mod model;
 
 
 // #[get("/macro-path")]
 // async fn index3() -> impl Responder {
 // 	HttpResponse::Ok().json("{aaaaa:Heeelll}")
 // }
-#[actix_rt::main]
 
+
+
+#[actix_rt::main]
 async fn main() -> std::io::Result<()> {
+	db::db_connection();
 	HttpServer::new(|| {
 		App::new()
-			.route("/",web::get().to(c::insert::index2))
-			.route("/ff",web::get().to(c::show::index))
+			.route("/",web::get().to(show::main))
+			//.route("/insert",web::get().to(c::show::index))
 			
 	 })	
 	   .bind("127.0.0.1:8080")?
