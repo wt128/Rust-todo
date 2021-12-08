@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="a.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <ul class="list-group" >
+            <li class="list-group-item" style="margin-top: 15px;">Morbi leo risus</li>
+            <li class="list-group-item" style="margin-top: 15px;" >Porta ac consectetur ac</li>
+            
+          </ul>
+          
+    </div>
+    
+</body>
+<script>
+    function ScrollWindow(ele) {
+        
+        
+
+        let element = document.getElementById(ele);
+        let rect = element.getBoundingClientRect().top;
+        
+        let offset = window.pageYOffset;
+        const target = rect + offset - 60;
+        window.scrollTo({
+            top: target,
+            behavior: 'smooth',
+        })
+    }
+</script>
+</html>

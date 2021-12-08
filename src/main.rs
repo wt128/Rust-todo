@@ -3,9 +3,11 @@ use actix_web::{web, App, HttpServer};
 #[macro_use]
 extern crate diesel;
 extern crate dotenv;
+extern crate serde;
 
 pub mod db;
 pub mod show;
+pub mod insert;
 pub mod schema;
 pub mod model;
 
@@ -20,6 +22,7 @@ async fn main() -> std::io::Result<()> {
 	HttpServer::new(|| {
 		App::new()
 			.route("/",web::get().to(show::show))
+			.route("/add",web::get().to(insert::insert))
 			//.route("/insert",web::get().to(c::show::index))
 			
 	 })	
