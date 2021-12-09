@@ -1,6 +1,6 @@
 use actix_web::{Responder,HttpResponse};
 
-use crate::model::{Todo, New};
+use crate::model::{New};
 use diesel::mysql::MysqlConnection;
 use crate::diesel::RunQueryDsl;
 

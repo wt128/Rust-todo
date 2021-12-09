@@ -5,7 +5,8 @@ use crate::model::*;
 //use serde::{Deserialize, Serialize};
 use diesel::prelude::*;
 use actix_web::{Responder,HttpResponse};
-use serde::Serialize;
+// use std::any::type_name;
+// use serde::Serialize;
 
 pub async fn show() -> impl Responder {
      use crate::schema::todos as todo_schema;
@@ -16,12 +17,13 @@ pub async fn show() -> impl Responder {
                          .expect("Error loading");
      
      println!("Displaying {} todo",results.len());
-     for todos in results {
+     for todos in &results {
           println!("{}",todos.title);
           println!("{}",todos.content);
      }
      
-     HttpResponse::Ok().json(results)
+     
+     HttpResponse::Ok().json(&results)
 
 
 }
