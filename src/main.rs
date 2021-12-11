@@ -7,7 +7,7 @@ extern crate serde;
 
 pub mod db;
 pub mod show;
-pub mod insert;
+pub mod create;
 pub mod schema;
 pub mod model;
 
@@ -22,7 +22,7 @@ async fn main() -> std::io::Result<()> {
 	HttpServer::new(|| {
 		App::new()
 			.route("/",web::get().to(show::show))
-			.route("/add",web::get().to(insert::insert))
+			.route("/post",web::post().to(create::insert))
 			//.route("/insert",web::get().to(c::show::index))
 			
 	 })	
